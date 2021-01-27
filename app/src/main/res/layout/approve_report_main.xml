@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/homePage_TXT_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:text="Report recived"
+        android:textSize="35dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+
+        />
+
+    <TextView
+        android:id="@+id/homedPage_TXT_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:text="Location and Time determined"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+
+        />
+
+
+
+    <ImageView
+        android:id="@+id/homePage_IMG_clock"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:paddingTop="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/done2_icon"/>
+    <TextView
+        android:id="@+id/homePage_TXT_txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="@string/thank_you"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        />
+
+
+    <LinearLayout
+
+        android:gravity="center"
+        android:orientation="horizontal"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_button"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/finish"
+            app:strokeColor="@color/black"
+            app:strokeWidth="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cornerRadius="10dp"
+            android:layout_margin="80dp"
+            android:textColor="@color/black"
+
+            />
+
+    </LinearLayout>
+</LinearLayout>
