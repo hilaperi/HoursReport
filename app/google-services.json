@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "544841780338",
+    "project_id": "hours-report-90967",
+    "storage_bucket": "hours-report-90967.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544841780338:android:c471d96c414cc121b246eb",
+        "android_client_info": {
+          "package_name": "hila.peri.hoursreportapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544841780338-tgnf6qqk18k8mqmh8o195bfrp8pj79it.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5ZScoUVnn4X6XM_Oxq9K04cQnRfCb580"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544841780338-tgnf6qqk18k8mqmh8o195bfrp8pj79it.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
