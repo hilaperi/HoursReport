@@ -2,9 +2,11 @@ package hila.peri.hoursreportapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button Login_BTN_login,Login_BTN_register;
     private FirebaseAuth mAuth;
     private ProgressDialog mLoadingBar;
+    public static String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkCardetials() {
-        String email = Login_TXT_email.getText().toString();
+        email = Login_TXT_email.getText().toString();
         String pass = Login_TXT_pass.getText().toString();
 
 
@@ -88,9 +92,16 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
+    public static String getMyString(){
+        return email; }
+//        SharedPreferences login = getSharedPreferences("LOGIN", 0);
+//        SharedPreferences.Editor editor = login.edit();
+//         editor.putString("user", Login_TXT_email.getText().toString());
+//         editor.commit();
 
     private void showError(EditText input, String s) {
         input.setError(s);
         input.requestFocus();
     }
+
 }
