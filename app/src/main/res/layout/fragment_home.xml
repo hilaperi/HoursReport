@@ -7,7 +7,7 @@
     >
 
     <TextView
-        android:id="@+id/homePage_TXT_header"
+        android:id="@+id/HomePage_TXT_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
@@ -19,7 +19,7 @@
         />
 
     <Spinner
-        android:id="@+id/homePage_SPN_type"
+        android:id="@+id/HomePage_SPNR_reportsType"
         android:gravity="bottom"
         android:layout_marginTop="16dp"
         android:background="@drawable/spinner_background"
@@ -31,14 +31,14 @@
 
 
     <ImageView
-        android:id="@+id/homePage_IMG_clock"
+        android:id="@+id/HomePage_IMG_clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="80dp"
         android:layout_gravity="center"
         android:src="@drawable/done_icon"/>
     <TextView
-        android:id="@+id/homePage_TXT_txtTime"
+        android:id="@+id/HomePage_TXT_HeaderTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
@@ -47,7 +47,7 @@
         android:textColor="@color/black"
         />
     <TextView
-        android:id="@+id/homePage_TXT_currentTime"
+        android:id="@+id/HomePage_TXT_CurrentTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
@@ -67,7 +67,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/homePage_BTN_OK"
+            android:id="@+id/HomePage_BTN_Report"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

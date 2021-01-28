@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HoursReportAPp">
-        <activity android:name=".ui.home.HomeApprove"></activity>
+        <activity android:name=".ui.home.HomeApproveActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

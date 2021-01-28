@@ -7,7 +7,7 @@
     >
 
     <TextView
-        android:id="@+id/homePage_TXT_header"
+        android:id="@+id/ReportApprove_TXT_MainHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="30dp"
@@ -19,7 +19,7 @@
         />
 
     <TextView
-        android:id="@+id/homedPage_TXT_header"
+        android:id="@+id/ReportApprove_TXT_Secondheader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
@@ -33,14 +33,14 @@
 
 
     <ImageView
-        android:id="@+id/homePage_IMG_clock"
+        android:id="@+id/ReportApprove_IMG_done"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:paddingTop="20dp"
         android:layout_gravity="center"
         android:src="@drawable/done2_icon"/>
     <TextView
-        android:id="@+id/homePage_TXT_txtTime"
+        android:id="@+id/ReportApprove_TXT_thankYou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="20dp"
@@ -61,7 +61,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_button"
+            android:id="@+id/ReportApprove_BTN_finish"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
