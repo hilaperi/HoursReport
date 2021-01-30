@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import hila.peri.hoursreportapp.R;
 
-public class ReportsActivity extends Fragment {
+public class ReportsFragment extends Fragment {
     private DetailsDayFragment detailsDayFragment;
     private MapsFragment fragmentMap;
 

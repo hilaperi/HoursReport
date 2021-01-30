@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="hila.peri.hoursreportapp.ui.slideshow.ReportsActivity"
+        android:name="hila.peri.hoursreportapp.ui.slideshow.ReportsFragment"
         android:label="@string/menu_summary"
         tools:layout="@layout/activity_reports" />
 </navigation>
