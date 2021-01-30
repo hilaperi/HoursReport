@@ -60,16 +60,16 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if(email.isEmpty()||!email.contains("@")){
-            showError(Login_TXT_email,"email is invalid");
+            showError(Login_TXT_email,"Email is invalid");
 
         }
         else if(pass.isEmpty()||pass.length()<4){
-            showError(Login_TXT_pass,"your pass must to have min 5 caracter");
+            showError(Login_TXT_pass,"Your password must have min 5 numbers");
 
         }
         else {
             mLoadingBar.setTitle("Login");
-            mLoadingBar.setMessage("wait");
+            mLoadingBar.setMessage("Please wait, check validation user");
             mLoadingBar.setCanceledOnTouchOutside(false);
             mLoadingBar.show();
 
@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     else {
                         mLoadingBar.dismiss();
-                        Toast.makeText(LoginActivity.this,"Try again",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,"Data wrong, please try again",Toast.LENGTH_SHORT).show();
                     }
 
 

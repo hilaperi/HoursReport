@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.slideshow.ReportsActivity"
+ >
+
+        <ImageView
+            android:id="@+id/report_IMG_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/Register"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <FrameLayout
+                android:id="@+id/report_LAY_reportDay"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="24dp"
+                android:layout_weight="1"
+                android:background="#45454545" />
+
+            <FrameLayout
+                android:id="@+id/record_LAY_map"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="24dp"
+                android:background="#45454545" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>

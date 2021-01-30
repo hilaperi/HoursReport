@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slideshow.SlideshowFragment">
+    tools:context=".ui.slideshow.DetailsDayFragment">
 
     <TextView
         android:id="@+id/text_slideshow"
@@ -19,6 +19,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/HomePage_TXT_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:text="What would you like to report?"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/HomePage_SPNR_reportsType"
+        android:gravity="bottom"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/spinner_background"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:textSize="20sp"
+        android:text="TextView"
+        android:focusable="true" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

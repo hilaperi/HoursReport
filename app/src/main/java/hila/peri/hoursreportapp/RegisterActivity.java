@@ -52,19 +52,19 @@ public class RegisterActivity extends AppCompatActivity {
         String pass = Register_TXT_pass.getText().toString();
 
         if (username.isEmpty()||username.length()<1){
-            showError(Register_TXT_name,"user name is invalid");
+            showError(Register_TXT_name,"User name is invalid");
         }
         else if(email.isEmpty()||!email.contains("@")){
-            showError(Register_TXT_email,"email is invalid");
+            showError(Register_TXT_email,"Email is invalid");
 
         }
         else if(pass.isEmpty()||pass.length()<4){
-            showError(Register_TXT_pass,"your pass must to have min 5 caracter");
+            showError(Register_TXT_pass,"Your password must have min 5 numbers");
 
         }
         else {
-            mLoadingBar.setTitle("Registeration");
-            mLoadingBar.setMessage("wait");
+            mLoadingBar.setTitle("Registrar");
+            mLoadingBar.setMessage("Please wait, In the registration process");
             mLoadingBar.setCanceledOnTouchOutside(false);
             mLoadingBar.show();
 
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(RegisterActivity.this,"Succesfully register",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"Registered successfully",Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
