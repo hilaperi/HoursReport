@@ -1,4 +1,4 @@
-package hila.peri.hoursreportapp.ui.slideshow;
+package hila.peri.hoursreportapp.ui.reports;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

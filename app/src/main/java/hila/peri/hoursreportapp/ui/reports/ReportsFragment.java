@@ -1,4 +1,4 @@
-package hila.peri.hoursreportapp.ui.slideshow;
+package hila.peri.hoursreportapp.ui.reports;
 
 import android.os.Bundle;
 
@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import hila.peri.hoursreportapp.R;
 
 public class ReportsFragment extends Fragment {
-    private DetailsDayFragment detailsDayFragment;
+    private DatePickerFragment datePickerFragment;
     private MapsFragment fragmentMap;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_reports, container, false);
+        View view = inflater.inflate(R.layout.fragment_reports, container, false);
 
         findViews(view);
         initViews();
@@ -28,10 +28,10 @@ public class ReportsFragment extends Fragment {
 
 
         private void initViews () {
-            detailsDayFragment = new DetailsDayFragment();
+            datePickerFragment = new DatePickerFragment();
             FragmentManager fm2 = getFragmentManager();
             FragmentTransaction ft2 = fm2.beginTransaction();
-            ft2.add(R.id.report_LAY_reportDay, detailsDayFragment);
+            ft2.add(R.id.report_LAY_reportDay, datePickerFragment);
             ft2.commit();
 
             fragmentMap = new MapsFragment();

@@ -8,6 +8,16 @@
     android:orientation="vertical"
     android:background="@color/hamburgerMenuColor"
     >
+    <TextView
+        android:id="@+id/Login_TXT_appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        />
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
@@ -35,12 +45,15 @@
 
         />
 
-
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     >
     <EditText
         android:id="@+id/Login_TXT_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="15"
         android:hint="Email"
         android:inputType="textPersonName"
         android:layout_marginTop="15dp"
@@ -52,13 +65,21 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_gravity="center"
-        />
+        android:background="@android:color/transparent"
 
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        >
     <EditText
         android:id="@+id/Login_TXT_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="15"
         android:hint="Password"
         android:inputType="textPersonName"
         android:layout_marginTop="15dp"
@@ -71,7 +92,11 @@
         android:layout_marginEnd="8dp"
         android:layout_gravity="center"
         android:password="true"
+        android:background="@android:color/transparent"
+
         />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/Login_BTN_login"
@@ -86,6 +111,7 @@
         android:layout_margin="30dp"
         android:textColor="@color/black"
         android:layout_gravity="center"
+
 
         />
 

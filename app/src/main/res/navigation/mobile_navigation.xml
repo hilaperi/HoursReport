@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="hila.peri.hoursreportapp.ui.gallery.GalleryFragment"
+        android:name="hila.peri.hoursreportapp.ui.summary.SummaryFragment"
         android:label="@string/menu_reports"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_summary" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="hila.peri.hoursreportapp.ui.slideshow.ReportsFragment"
+        android:name="hila.peri.hoursreportapp.ui.reports.ReportsFragment"
         android:label="@string/menu_summary"
-        tools:layout="@layout/activity_reports" />
+        tools:layout="@layout/fragment_reports" />
 </navigation>

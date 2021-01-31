@@ -20,6 +20,11 @@
     <string name="Dont_have_an_account">Dont have an account?</string>
     <string name="Register">Register</string>
     <string name="new_account">New account</string>
+    <string name="work_day">Work day</string>
+    <string name="sick_day">Sick day</string>
+    <string name="free_day">Free day</string>
+    <string name="time_report">Time report:</string>
+    <string name="total">Total hours:</string>
 
 
     <string-array name="Repotrs_type">

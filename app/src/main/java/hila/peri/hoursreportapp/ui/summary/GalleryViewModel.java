@@ -1,4 +1,4 @@
-package hila.peri.hoursreportapp.ui.gallery;
+package hila.peri.hoursreportapp.ui.summary;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -11,6 +11,8 @@ public class GalleryViewModel extends ViewModel {
     public GalleryViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
+
+
     }
 
     public LiveData<String> getText() {
