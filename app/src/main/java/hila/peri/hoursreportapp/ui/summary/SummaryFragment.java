@@ -1,6 +1,7 @@
 package hila.peri.hoursreportapp.ui.summary;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class SummaryFragment extends Fragment {
 
     private MonthPickerFragment monthPickerFragment;
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_summary, container, false);
@@ -37,6 +39,8 @@ public class SummaryFragment extends Fragment {
         FragmentTransaction ft2 = fm2.beginTransaction();
         ft2.add(R.id.summary_LAY_reportDay, monthPickerFragment);
         ft2.commit();
+
+
 
     }
 

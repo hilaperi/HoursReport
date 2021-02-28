@@ -2,12 +2,15 @@ package hila.peri.hoursreportapp.ui.home;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -44,10 +48,14 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     private TextView HomePage_TXT_header;
     private Spinner HomePage_SPNR_reportsType;
     private ImageView HomePage_IMG_clock;
-    private  TextView HomePage_TXT_HeaderTime;
-    private TextView HomePage_TXT_CurrentTime;
+    private TextView HomePage_TXT_HeaderTime;
+    private TextClock HomePage_TXT_CurrentTime;
     private Button HomePage_BTN_Report;
-    String currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
+    private TextView totalFreeDayes;
+    private int freeDayesCounter = 0;
+    private int sickDayCounter = 0;
+    String currentDateTimeString = java.text.DateFormat.getTimeInstance().format(new Date());
+    Date time = new Date();
     View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -68,8 +76,9 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         HomePage_SPNR_reportsType = root.findViewById(R.id.HomePage_SPNR_reportsType);
         HomePage_IMG_clock = root.findViewById(R.id.HomePage_IMG_clock);
         HomePage_TXT_HeaderTime = root.findViewById(R.id.HomePage_TXT_HeaderTime);
-        HomePage_TXT_CurrentTime = root.findViewById(R.id.HomePage_TXT_CurrentTime);
+        HomePage_TXT_CurrentTime = (TextClock) root.findViewById(R.id.HomePage_TXT_CurrentTime);
         HomePage_BTN_Report = root.findViewById(R.id.HomePage_BTN_Report);
+        totalFreeDayes = root.findViewById(R.id.totalFreeDayes);
     }
 
     private void initViews() {
@@ -79,89 +88,27 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         HomePage_SPNR_reportsType.setAdapter(adapter);
         HomePage_SPNR_reportsType.setOnItemSelectedListener(this);
 
+
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 HomePage_TXT_header.setText(s);
-                HomePage_TXT_CurrentTime.setText(currentDateTimeString);
+//                HomePage_TXT_CurrentTime.setFormat12Hour(null);
+                HomePage_TXT_CurrentTime.setFormat24Hour("EEE MMM d hh:mm:ss a");
 
             }
         });
+//        String type = HomePage_SPNR_reportsType.getItemAtPosition(0).toString();
 
-        HomePage_BTN_Report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
-                startActivity(intent);            }
-        });
-        if (currentLocation != null) {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            intent.putExtra(MainActivity.LATITUDE, currentLocation.getLatitude());
-            intent.putExtra(MainActivity.LONGITUDE, currentLocation.getLongitude());
-        }
+//        if (currentLocation != null) {
+//            Intent intent = new Intent(getActivity(), MainActivity.class);
+//            intent.putExtra(MainActivity.LATITUDE, currentLocation.getLatitude());
+//            intent.putExtra(MainActivity.LONGITUDE, currentLocation.getLongitude());
+//        }
 
     }
 
-    private void mapFunc() {
-        //thisActivity is the current activity
-        if (ContextCompat.checkSelfPermission(getActivity(),
-                Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
 
-
-            // Permission is not granted
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
-                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Request Location permission")
-                        .setMessage("You have to give this permission to access this feature ")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(getActivity(),
-                                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .create()
-                        .show();
-            } else {
-                // request the permission
-                ActivityCompat.requestPermissions(getActivity(),
-                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
-        } else {
-            // Permission has already been granted
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            // Got last known location. In some rare situations this can be null.
-                            if (location != null) {
-                                // Logic to handle location object
-                                currentLocation = location;
-                            }
-                        }
-                    });
-        }
-
-    }
     public void onPointerCaptureChanged(boolean hasCapture) {
 
 
@@ -171,7 +118,44 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text= parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
-        ((TextView) parent.getChildAt(0)).setTextColor(Color.GREEN);
+        if(text.equals("Work")) {
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.GREEN);
+            HomePage_BTN_Report.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                SharedPreferences preference
+                        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("reported_time", currentDateTimeString).apply();
+                        Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
+                        startActivity(intent);
+                }
+            });
+
+
+        }else if(text.equals("Free")){
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.YELLOW);
+            HomePage_BTN_Report.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    freeDayesCounter +=1;
+                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("free_day", String.valueOf(++freeDayesCounter)).apply();
+                    Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }else if(text.equals("Sick")){
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.RED);
+            HomePage_BTN_Report.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                   sickDayCounter +=1;
+                   PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("sick_day", String.valueOf(sickDayCounter)).apply();
+                   Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
+                   startActivity(intent);
+                }
+            });
+
+        }
+
 
     }
 
@@ -179,10 +163,5 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     public void onNothingSelected(AdapterView<?> parent) {
 
         }
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapFunc();
-    }
 
 }

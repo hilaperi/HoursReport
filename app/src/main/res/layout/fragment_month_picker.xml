@@ -16,16 +16,7 @@
         android:calendarViewShown="false"
         />
 
-    <TextView
-        android:id="@+id/thePicckגer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/work_day"
-        android:textSize="20dp"
-        android:textColor="@color/green"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +25,7 @@
         tools:context=".ui.reports.DatePickerFragment">
 
         <TextView
-            android:id="@+id/date_picker_timeReport"
+            android:id="@+id/totalMonthHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -44,11 +35,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/date_picker_editTimeReport"
+            android:id="@+id/editTotalMonthHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="110"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="15dp" />
     </LinearLayout>
@@ -59,7 +50,7 @@
         android:orientation="horizontal"
         tools:context=".ui.reports.DatePickerFragment">
         <TextView
-            android:id="@+id/date_pickerd_totalHour"
+            android:id="@+id/totalWorkingDayes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total working day:"
@@ -69,11 +60,11 @@
             android:textStyle="bold"
             />
         <TextView
-            android:id="@+id/date_picker_editTotalHour"
+            android:id="@+id/editTotalWorkingDayes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="10"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="15dp" />
     </LinearLayout>
@@ -83,7 +74,7 @@
         android:orientation="horizontal"
         tools:context=".ui.reports.DatePickerFragment">
         <TextView
-            android:id="@+id/date_picwkerd_totalHour"
+            android:id="@+id/totalFreeDayes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total free day:"
@@ -93,21 +84,22 @@
             android:textStyle="bold"
             />
         <TextView
-            android:id="@+id/date_piceker_editTotalHour"
+            android:id="@+id/editTotalFreeDayes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="1"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="15dp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:context=".ui.reports.DatePickerFragment">
         <TextView
-            android:id="@+id/date_picrkerd_totalHour"
+            android:id="@+id/totalSickDayes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total sick day:"
@@ -117,21 +109,21 @@
             android:textStyle="bold"
             />
         <TextView
-            android:id="@+id/dfate_picker_editTotalHour"
+            android:id="@+id/editTotalSickDays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="1"
+            android:text="0"
             android:textColor="@color/black"
             android:textSize="15dp" />
     </LinearLayout>
+
+
     <EditText
-        android:id="@+id/Login_TXT_email"
+        android:id="@+id/salary_TXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:hint="Enter hourly salary"
-        android:inputType="textPersonName"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -139,20 +131,15 @@
         android:layout_marginEnd="8dp"
         android:layout_gravity="center"
         />
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/Login_BTN_login"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+
+    <Button
+        android:id="@+id/calc_BTN_calc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calc a monthly salary"
-        app:strokeColor="@color/purple_200"
-        app:strokeWidth="6dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cornerRadius="10dp"
         android:layout_margin="30dp"
         android:textColor="@color/black"
         android:layout_gravity="center"
-
         />
 
 <LinearLayout
@@ -165,7 +152,7 @@
     >
 
 <TextView
-        android:id="@+id/dfate_picker_edibtTotalHour"
+        android:id="@+id/totalSalary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total salary:"
@@ -174,14 +161,14 @@
 
         />
     <TextView
-        android:id="@+id/dfate_pdicker_edibtTotalHour"
+        android:id="@+id/editTotalSalary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="10,000"
+        android:text="0"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:layout_gravity="center"
+
         />
 
 

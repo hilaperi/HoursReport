@@ -6,15 +6,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Date;
 
 import hila.peri.hoursreportapp.R;
 
 public class ReportsFragment extends Fragment {
     private DatePickerFragment datePickerFragment;
     private MapsFragment fragmentMap;
+    String yes = "";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,6 +50,7 @@ public class ReportsFragment extends Fragment {
         }
 
         private void findViews (View view){
+
         }
 
     }
