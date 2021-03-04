@@ -94,18 +94,10 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             @Override
             public void onChanged(@Nullable String s) {
                 HomePage_TXT_header.setText(s);
-//                HomePage_TXT_CurrentTime.setFormat12Hour(null);
                 HomePage_TXT_CurrentTime.setFormat24Hour("EEE MMM d hh:mm:ss a");
 
             }
         });
-//        String type = HomePage_SPNR_reportsType.getItemAtPosition(0).toString();
-
-//        if (currentLocation != null) {
-//            Intent intent = new Intent(getActivity(), MainActivity.class);
-//            intent.putExtra(MainActivity.LATITUDE, currentLocation.getLatitude());
-//            intent.putExtra(MainActivity.LONGITUDE, currentLocation.getLongitude());
-//        }
 
     }
 
@@ -124,7 +116,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             HomePage_BTN_Report.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                SharedPreferences preference
                         workingDayesCounter += 1;
                         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("reported_time", currentDateTimeString).apply();
                         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("type_of_day", "work_day").apply();
@@ -141,7 +132,6 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
                 @Override
                 public void onClick(View view) {
                     freeDayesCounter +=1;
-//                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("free_day", String.valueOf(++freeDayesCounter)).apply();
                     PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("type_of_day", "free_day").apply();
                     Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
                     startActivity(intent);

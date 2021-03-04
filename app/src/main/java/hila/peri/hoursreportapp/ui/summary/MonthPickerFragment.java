@@ -35,6 +35,7 @@ import hila.peri.hoursreportapp.ui.reports.SlideshowViewModel;
 import static hila.peri.hoursreportapp.ui.home.HomeFragment.freeDayesCounter;
 import static hila.peri.hoursreportapp.ui.home.HomeFragment.sickDayCounter;
 import static hila.peri.hoursreportapp.ui.home.HomeFragment.workingDayesCounter;
+import static hila.peri.hoursreportapp.ui.reports.DatePickerFragment.hours;
 import static hila.peri.hoursreportapp.ui.reports.DatePickerFragment.min;
 
 
@@ -45,7 +46,6 @@ public class MonthPickerFragment extends Fragment {
     private TextView editTotalMonthHours;
     private Button calc_BTN_calc;
     private EditText salary_TXT;
-//    private String salaryPerHour;
     private TextView editTotalSalary;
     private TextView editTotalFreeDayes;
     private  TextView editTotalWorkingDayes;
@@ -83,10 +83,6 @@ public class MonthPickerFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_month_picker, container, false);
 
         findViews(view);
-
-//        mDatabase = FirebaseDatabase.getInstance().getReference();
-//        editTotalMonthHours.setText(time);
-
         initViews();
 
 
@@ -110,28 +106,15 @@ public class MonthPickerFragment extends Fragment {
 
     private void initViews() {
 
-        if(min == 0){
+        if(hours == 0){
             totalhoursbase = Integer.parseInt(onpausetotal);
             stringTotalHourBase = String.valueOf(totalhoursbase);
             editTotalMonthHours.setText(stringTotalHourBase);
         }else{
-            totalhoursbase = Integer.parseInt(onpausetotal) +  min;
-//            totalhoursbase = Integer.parseInt(time) +  min;
+            totalhoursbase = Integer.parseInt(onpausetotal) +  hours;
             stringTotalHourBase = String.valueOf(totalhoursbase);
             editTotalMonthHours.setText(stringTotalHourBase);
         }
-
-
-//        if(workingDayesCounter == 0){
-//            totalhoursbase = Integer.parseInt(totalworkonpause);
-//            stringTotalHourBase = String.valueOf(totalhoursbase);
-//            editTotalWorkingDayes.setText(stringTotalHourBase);
-//        }else{
-//            totalhoursbase = Integer.parseInt(totalworkonpause) +  workingDayesCounter;
-////            totalhoursbase = Integer.parseInt(time) +  min;
-//            stringTotalHourBase = String.valueOf(totalhoursbase);
-//            editTotalWorkingDayes.setText(stringTotalHourBase);
-//        }
 
 
         editTotalWorkingDayes.setText(String.valueOf(workingDayesCounter));
@@ -166,48 +149,11 @@ public class MonthPickerFragment extends Fragment {
 
         }
 
-
-//        String timetotalworking = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("totalworking", "0");
-//        if(timetotalworking.equals("0")) {
-//            editTotalWorkingDayes.setText(timetotalworking);
-//        }else{
-////            editTotalWorkingDayes.setText(String.valueOf(workingDayesCounter));
-//            editTotalWorkingDayes.setText(String.valueOf(workingDayesCounter + Integer.parseInt(timetotalworking)));
-//
-//        }
-
         editTotalWorkingDayes.setText(String.valueOf(workingDayesCounter));
 
         editTotalFreeDayes.setText(String.valueOf(freeDayesCounter));
 
         editTotalSickDays.setText(String.valueOf(sickDayCounter));
-
-
-//        String timetotalworking = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("totalworking", "0");
-//
-//        if(!timetotalworking.equals("0")) {
-//            editTotalWorkingDayes.setText(String.valueOf(workingDayesCounter + Integer.parseInt(timetotalworking)));
-//
-//        }
-//
-//        String timetotalfree = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("totalfree", "0");
-//
-//        if(!timetotalfree.equals("0")) {
-//            editTotalFreeDayes.setText(String.valueOf(freeDayesCounter+ Integer.parseInt(timetotalfree)));
-//
-//        }
-//
-//        String timetotalsick = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("totalsick","0");
-//
-//        if(!timetotalsick.equals("0")) {
-//            editTotalSickDays.setText(String.valueOf(sickDayCounter + Integer.parseInt(timetotalsick)));
-////            editTotalSickDays.setText(timetotalsick);
-//
-//        }
-
-//        workingDayesCounter = 0;
-//        freeDayesCounter = 0;
-//        sickDayCounter = 0;
 
     }
 
@@ -220,14 +166,11 @@ public class MonthPickerFragment extends Fragment {
         totalfreeonpause = editTotalFreeDayes.getText().toString();
         totalsickonpause = editTotalSickDays.getText().toString();
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalmonth", onpausetotal).commit();
-//        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalworking", totalworkonpause).commit();
-//        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalfree", totalfreeonpause).commit();
-//        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalsick", totalsickonpause).commit();
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalworking", totalworkonpause).commit();
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalfree", String.valueOf(freeDayesCounter)).commit();
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalsick", String.valueOf(sickDayCounter)).commit();
-        min=0;
 
+        hours = 0;
     }
 
 
@@ -235,10 +178,5 @@ public class MonthPickerFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-//        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalmonth", onpausetotal).commit();
-//        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalworking", String.valueOf(workingDayesCounter)).commit();
-//        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalfree", String.valueOf(freeDayesCounter)).commit();
-//        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("totalsick", String.valueOf(sickDayCounter)).commit();
     }
 }

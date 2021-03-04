@@ -58,6 +58,7 @@ public class DatePickerFragment extends Fragment {
     private int numOfDays;
     private int mYear;
     public static int min = 0;
+    public static int hours = 0;
 //    public static hours
     private int datesArray[] = new int[30];
     int i = 0;
@@ -115,9 +116,6 @@ public class DatePickerFragment extends Fragment {
     }
 
     private void initViews () throws ParseException {
-//        date_picker_editTimeReport.setFormat12Hour(null);
-//        date_picker_editTimeReport.setFormat24Hour("hh:mm:ss a");
-
 
         String typeOfDay = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("type_of_day", "0");
         if(typeOfDay.equals("sick_day")){
@@ -178,21 +176,11 @@ public class DatePickerFragment extends Fragment {
         enterLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                location.onLocationChanged(loc);
-//                PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("has_clicked12", "yes").apply();
 
-//                String text= "Location saved have a great day at work !";
-//                String time = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("reported_time", "reported time");
                 String text= String.valueOf(mDay);
-
-//                Toast.makeText(getActivity(), day1[1].trim(),Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getActivity(), currentDateString,Toast.LENGTH_SHORT).show();
-
                 datesArray[i] = Integer.parseInt(day1[1]);
-//                String text= String.valueOf(simpleCalendarView.getDate());
-//                Toast.makeText(getActivity(), text,Toast.LENGTH_SHORT).show();
-                i++;
 
+                i++;
                 LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                 Toast.makeText(getActivity(), String.valueOf(latLng),Toast.LENGTH_SHORT).show();
 
@@ -206,7 +194,7 @@ public class DatePickerFragment extends Fragment {
             public void onClick(View view) {
                 long totalHours = time2.getTime() - time1.getTime();
                 int days = (int) (totalHours / (1000*60*60*24));
-                int hours = (int) ((totalHours - (1000 * 60 * 60 * 24 * days)) / (1000 * 60 * 60 * 24));
+                hours = (int) ((totalHours - (1000 * 60 * 60 * 24 * days)) / (1000 * 60 * 60 * 24));
                 min = (int) (totalHours - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
                 hours = (hours < 0 ? -hours : hours);
 //                PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("total_Hours", String.valueOf(min)).apply();
