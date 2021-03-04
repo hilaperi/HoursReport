@@ -52,8 +52,9 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     private TextClock HomePage_TXT_CurrentTime;
     private Button HomePage_BTN_Report;
     private TextView totalFreeDayes;
-    private int freeDayesCounter = 0;
-    private int sickDayCounter = 0;
+    public static int freeDayesCounter = 0;
+    public static int sickDayCounter = 0;
+    public static int workingDayesCounter = 0;
     String currentDateTimeString = java.text.DateFormat.getTimeInstance().format(new Date());
     Date time = new Date();
     View root;
@@ -124,7 +125,10 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
                 @Override
                 public void onClick(View v) {
 //                SharedPreferences preference
+                        workingDayesCounter += 1;
                         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("reported_time", currentDateTimeString).apply();
+                        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("type_of_day", "work_day").apply();
+//                        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("working_day", String.valueOf(workingDayesCounter)).apply();
                         Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
                         startActivity(intent);
                 }
@@ -136,8 +140,9 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             HomePage_BTN_Report.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    freeDayesCounter +=1;
-                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("free_day", String.valueOf(++freeDayesCounter)).apply();
+                    freeDayesCounter +=1;
+//                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("free_day", String.valueOf(++freeDayesCounter)).apply();
+                    PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("type_of_day", "free_day").apply();
                     Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
                     startActivity(intent);
                 }
@@ -148,7 +153,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
                 @Override
                 public void onClick(View view) {
                    sickDayCounter +=1;
-                   PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("sick_day", String.valueOf(sickDayCounter)).apply();
+
+                   PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putString("type_of_day", "sick_day").apply();
                    Intent intent = new Intent(getActivity(), HomeApproveActivity.class);
                    startActivity(intent);
                 }

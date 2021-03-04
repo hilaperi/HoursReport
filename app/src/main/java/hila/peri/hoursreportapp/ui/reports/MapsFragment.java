@@ -45,8 +45,11 @@ public class MapsFragment extends SupportMapFragment
     SupportMapFragment mapFrag;
     LocationRequest mLocationRequest;
     GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
+    public static Location mLastLocation;
     Marker mCurrLocationMarker;
+
+
+
 
     @Override
     public void onResume() {

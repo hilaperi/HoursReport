@@ -2,10 +2,15 @@ package hila.peri.hoursreportapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +22,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import hila.peri.hoursreportapp.ui.reports.ReportsFragment;
+import hila.peri.hoursreportapp.ui.summary.MonthPickerFragment;
+
 public class RegisterActivity extends AppCompatActivity {
 
 
@@ -26,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText Register_TXT_pass;
     private Button Register_BTN_register,Register_BTN_alreadyHaveAcc;
     private FirebaseAuth mAuth;
+    MonthPickerFragment m = new MonthPickerFragment();;
     private ProgressDialog mLoadingBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
             mLoadingBar.setMessage("Please wait, In the registration process");
             mLoadingBar.setCanceledOnTouchOutside(false);
             mLoadingBar.show();
+
 
             mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
